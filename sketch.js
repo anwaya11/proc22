@@ -43,48 +43,52 @@ function setup() {
 
 
 function draw() {
-  background(bgImg);
+
+	background(bgImg);
+
+		Matter.Body.setStatic(body,isStatic)
+
+		drawSprites();
+	}
 
 
-star.x=starBody.position.x;
-star.y=starBody.position.y;
 
-if(keyPressed("right_arrow")){
-	fairy.velocityX=4
-}
-
-//if(keyWentUp("right_arrow")){
-//	fairy.velocityX=0
-//}
-
-if(keyPressed("left_arrow")){
-	fairy.velocityX=-4
-}
-
-//if(keyWentUp("left_arrow")){
-	//fairy.velocityX=0
-//}
-
-if(keyPressed("down_arrow")){
-	starBody.velocityY=4
-}
-
-//if(starBody.isTouching(fairy)){
-  
-   // star.velocityY=0;
-
-//}
-
-if(starBody.position.y > 470){
-	starBody.velocityY=0;
-}
-
-  drawSprites();
-
-Matter.Body.setStatic(body,isStatic)
-
-}
 
 function keyPressed() {
+
+	
+
+	star.x=starBody.position.x;
+	star.y=starBody.position.y;
+	
+	if(keyCode === RIGHT_ARROW){
+		fairy.x=fairyx + 20;
+	}
+	
+	if(keyCode === LEFT_ARROW){
+		fairy.x = fairy.x -20;
+	}
+	
+	//if(keyPressed("left_arrow")){
+		//fairy.velocityX=-4
+	//}
+	
+	//if(keyWentUp("left_arrow")){
+		//fairy.velocityX=0
+	//}
+	
+	if(keyCode === DOWN_ARROW){
+	  Matter.Body.setStatic(starBody,false)
+	}
+	
+	//if(starBody.isTouching(fairy)){
+	  
+	   // star.velocityY=0;
+	
+	//}
+	
+	if(starBody.position.y > 470){
+		starBody.velocityY=0;
 	//write code here
+}
 }
